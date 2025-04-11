@@ -2,7 +2,7 @@
 
 *Modern Software Education. Real-World Skills.*
 
-![Techmentum Banner](https://via.placeholder.com/1200x300?text=Techmentum+-+Modern+Tech+Learning+Platform) <!-- Replace with actual banner when available -->
+![Techmentum Banner](https://www.shutterstock.com/image-vector/software-testing-banner-web-icon-260nw-2219991321.jpg) <!-- Replace with actual banner when available -->
 
 ---
 
