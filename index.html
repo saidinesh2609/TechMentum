@@ -1,130 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="TechMentum - A modern tech education platform offering hands-on training in DevOps, QA, and more." />
-  <meta name="keywords" content="DevOps, QA, Automation, Tech Education, Docker, Kubernetes" />
-  <title>DevOps & QA Academy</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-</head>
-<body class="bg-gray-50 text-gray-800">
-  <!-- Dark Mode Toggle -->
-  <button id="dark-mode-toggle" class="fixed bottom-4 right-4 bg-indigo-600 text-white py-2 px-4 rounded-full shadow-lg hover:bg-indigo-700 transition">
-    Toggle Dark Mode
-  </button>
-  
-  <!-- Navbar -->
-  <nav class="bg-white shadow-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-extrabold text-indigo-600 tracking-wide">DevOps & QA Academy</h1>
-      <ul class="flex space-x-6 text-base font-medium">
-        <li><a href="#devops" class="hover:text-indigo-600 transition">DevOps</a></li>
-        <li><a href="#qa" class="hover:text-indigo-600 transition">QA</a></li>
-        <li><a href="#projects" class="hover:text-indigo-600 transition">Projects</a></li>
-        <li><a href="#testimonials" class="hover:text-indigo-600 transition">Testimonials</a></li>
-        <li><a href="#contact" class="hover:text-indigo-600 transition">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-32" data-aos="fade-up">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-5xl font-extrabold mb-4 leading-tight">Master DevOps & QA – Manual & Automation</h2>
-      <p class="text-xl mb-8">Your one-stop academy for mastering tools, technologies & workflows in modern DevOps and QA.</p>
-      <a href="#devops" class="inline-block bg-white text-indigo-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition shadow">Explore Courses</a>
-    </div>
-  </section>
-
-  <!-- DevOps Section -->
-  <section id="devops" class="py-24 bg-white" data-aos="fade-right">
-    <div class="max-w-7xl mx-auto px-4">
-      <h3 class="text-4xl font-bold text-indigo-600 mb-10 text-center">DevOps Track</h3>
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <ul class="list-disc list-inside text-lg space-y-4">
-          <li>Linux Essentials & Shell Scripting</li>
-          <li>Git, GitHub, GitLab CI/CD</li>
-          <li>Docker & Kubernetes (K8s)</li>
-          <li>Terraform & Infrastructure as Code (IaC)</li>
-          <li>Jenkins, Ansible & Prometheus</li>
-          <li>AWS, GCP, and Azure Fundamentals</li>
-        </ul>
-        <lottie-player src="https://assets1.lottiefiles.com/private_files/lf30_rzst1baj.json" background="transparent" speed="1" style="width: 100%; height: 300px;" loop autoplay></lottie-player>
-      </div>
-    </div>
-  </section>
-
-  <!-- QA Section -->
-  <section id="qa" class="py-24 bg-gray-100" data-aos="fade-left">
-    <div class="max-w-7xl mx-auto px-4">
-      <h3 class="text-4xl font-bold text-purple-600 mb-10 text-center">QA Track (Manual + Automation)</h3>
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <ul class="list-disc list-inside text-lg space-y-4">
-          <li>Testing Fundamentals (Blackbox, Whitebox)</li>
-          <li>Manual Testing Life Cycle (STLC)</li>
-          <li>Test Case Design & Bug Reporting</li>
-          <li>Selenium WebDriver & TestNG</li>
-          <li>Pytest, Robot Framework & API Testing</li>
-          <li>CI/CD Integration with Jenkins</li>
-        </ul>
-        <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_xlmz9xwm.json" background="transparent" speed="1" style="width: 100%; height: 300px;" loop autoplay></lottie-player>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials Section -->
-  <section id="testimonials" class="py-24 bg-white" data-aos="fade-up">
-    <div class="max-w-7xl mx-auto px-4 text-center">
-      <h3 class="text-4xl font-bold text-indigo-600 mb-10">What Our Students Say</h3>
-      <div class="grid md:grid-cols-3 gap-10">
-        <div class="p-6 bg-gray-50 shadow-lg rounded-xl border hover:shadow-xl transition">
-          <p>"The DevOps course was outstanding! The hands-on projects were extremely helpful in understanding real-world scenarios."</p>
-          <h4 class="text-sm mt-4 text-indigo-600">– Jane Doe</h4>
-        </div>
-        <div class="p-6 bg-gray-50 shadow-lg rounded-xl border hover:shadow-xl transition">
-          <p>"Loved the QA Automation track. The instructors were knowledgeable and always available to clear doubts."</p>
-          <h4 class="text-sm mt-4 text-indigo-600">– John Smith</h4>
-        </div>
-        <div class="p-6 bg-gray-50 shadow-lg rounded-xl border hover:shadow-xl transition">
-          <p>"TechMentum is an excellent platform for anyone looking to upskill in tech fields like DevOps and QA."</p>
-          <h4 class="text-sm mt-4 text-indigo-600">– Alex Johnson</h4>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="py-24 bg-gradient-to-r from-indigo-600 to-purple-600 text-white" data-aos="zoom-in">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center mb-10">Get in Touch</h2>
-      <!-- Contact form remains unchanged -->
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-10 mt-10">
-    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-      <p class="text-sm">&copy; 2025 TechMentum. All rights reserved.</p>
-      <div class="flex space-x-6">
-        <a href="#home" class="hover:underline">Home</a>
-        <a href="#projects" class="hover:underline">Projects</a>
-        <a href="#testimonials" class="hover:underline">Testimonials</a>
-        <a href="#contact" class="hover:underline">Contact</a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init();
-    const toggleButton = document.getElementById('dark-mode-toggle');
-    toggleButton.addEventListener('click', () => {
-      document.body.classList.toggle('bg-gray-900');
-      document.body.classList.toggle('text-white');
-    });
-  </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="src/images/favi1.ico" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CyberDefend</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
