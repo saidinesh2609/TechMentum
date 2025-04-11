@@ -2,7 +2,7 @@
 
 *Modern Software Education. Real-World Skills.*
 
-![Techmentum Banner](https://www.shutterstock.com/image-vector/software-testing-banner-web-icon-260nw-2219991321.jpg) <!-- Replace with actual banner when available -->
+![Techmentum Banner](https://www.shutterstock.com/image-vector/devops-banner-web-icon-vector-600nw-2129690570.jpg) <!-- Replace with actual banner when available -->
 
 ---
 
