@@ -86,7 +86,7 @@ const Hero = () => {
               Join our expert-led batches and become a DevOps QA.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <a href="https://lms.cyberdefend.in" target="_blank" rel="noopener noreferrer">
+            <a href="https://lms.techmentum.in" target="_blank" rel="noopener noreferrer">
   <motion.button
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
