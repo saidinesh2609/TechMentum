@@ -3,7 +3,8 @@ const chatbotButton = document.getElementById("chatbot-button");
 const chatbotModal = document.getElementById("chatbot-modal");
 const chatbotCloseButton = document.getElementById("chatbot-close");
 const chatbotInput = document.getElementById("chatbot-input");
-const chatbotMessages = document.getElementById("chatbot-body");
+const chatbotMessages = document.getElementById("chatbot-messages"); // ✅ corrected ID from 'chatbot-body' to 'chatbot-messages'
+const chatbotForm = document.getElementById("chatbot-form");
 
 // Open and close the chatbot modal
 chatbotButton.addEventListener("click", () => {
@@ -17,24 +18,24 @@ chatbotCloseButton.addEventListener("click", () => {
   chatbotModal.classList.add("hidden");
 });
 
-// Handle form submission (Enter key)
-chatbotInput.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
-    const userMessage = chatbotInput.value.trim();
+// ✅ Handle form submission (prevent page reload)
+chatbotForm.addEventListener("submit", (event) => {
+  event.preventDefault(); // Stop form from reloading the page
 
-    if (userMessage) {
-      // Display user message in the chat
-      displayMessage(userMessage, "user");
+  const userMessage = chatbotInput.value.trim();
 
-      // Clear the input field
-      chatbotInput.value = "";
+  if (userMessage) {
+    // Display user message
+    displayMessage(userMessage, "user");
 
-      // Simulate bot's response (this can be enhanced with actual logic)
-      setTimeout(() => {
-        const botResponse = getBotResponse(userMessage);
-        displayMessage(botResponse, "bot");
-      }, 1000);
-    }
+    // Clear input
+    chatbotInput.value = "";
+
+    // Simulate bot response
+    setTimeout(() => {
+      const botResponse = getBotResponse(userMessage);
+      displayMessage(botResponse, "bot");
+    }, 600);
   }
 });
 
@@ -52,12 +53,11 @@ function displayMessage(message, sender) {
   }
 
   chatbotMessages.appendChild(messageElement);
-  chatbotMessages.scrollTop = chatbotMessages.scrollHeight; // Scroll to the latest message
+  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 }
 
-// Function to generate bot response (can be expanded with AI or specific logic)
+// Simple keyword-based bot responses
 function getBotResponse(userMessage) {
-  // Basic responses for testing (can be expanded)
   const responses = {
     "hello": "Hi there! 👋 How can I assist you today?",
     "devops": "I can help you with DevOps-related topics like CI/CD, Docker, Kubernetes, and more!",
@@ -66,9 +66,6 @@ function getBotResponse(userMessage) {
     "default": "Sorry, I didn't understand that. Can you please ask something else?"
   };
 
-  // Convert user message to lowercase to handle case insensitivity
   const normalizedMessage = userMessage.toLowerCase();
-
-  // Check if the message matches a predefined response
   return responses[normalizedMessage] || responses["default"];
 }
