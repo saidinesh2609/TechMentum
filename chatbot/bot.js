@@ -62,7 +62,7 @@ function displayMessage(message, sender) {
 
 // Function to call the backend API and get the ChatGPT response
 async function getBotResponseFromAPI(userMessage) {
-  const response = await fetch('chatbot/.netlify/functions/chat', {  // Change the URL if your server is hosted elsewhere
+  const response = await fetch('/.netlify/functions/chat', {  // Change the URL if your server is hosted elsewhere
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ message: userMessage }),
