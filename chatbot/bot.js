@@ -1,9 +1,11 @@
+// bot.js
+
 // Select required DOM elements
 const chatbotButton = document.getElementById("chatbot-button");
 const chatbotModal = document.getElementById("chatbot-modal");
 const chatbotCloseButton = document.getElementById("chatbot-close");
 const chatbotInput = document.getElementById("chatbot-input");
-const chatbotMessages = document.getElementById("chatbot-messages"); // ✅ corrected ID from 'chatbot-body' to 'chatbot-messages'
+const chatbotMessages = document.getElementById("chatbot-messages");
 const chatbotForm = document.getElementById("chatbot-form");
 
 // Open and close the chatbot modal
@@ -18,8 +20,8 @@ chatbotCloseButton.addEventListener("click", () => {
   chatbotModal.classList.add("hidden");
 });
 
-// ✅ Handle form submission (prevent page reload)
-chatbotForm.addEventListener("submit", (event) => {
+// Handle form submission (prevent page reload)
+chatbotForm.addEventListener("submit", async (event) => {
   event.preventDefault(); // Stop form from reloading the page
 
   const userMessage = chatbotInput.value.trim();
@@ -31,11 +33,13 @@ chatbotForm.addEventListener("submit", (event) => {
     // Clear input
     chatbotInput.value = "";
 
-    // Simulate bot response
-    setTimeout(() => {
-      const botResponse = getBotResponse(userMessage);
+    // Get bot response from the backend (ChatGPT API)
+    try {
+      const botResponse = await getBotResponseFromAPI(userMessage);
       displayMessage(botResponse, "bot");
-    }, 600);
+    } catch (error) {
+      displayMessage("Sorry, something went wrong. Please try again.", "bot");
+    }
   }
 });
 
@@ -56,16 +60,19 @@ function displayMessage(message, sender) {
   chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 }
 
-// Simple keyword-based bot responses
-function getBotResponse(userMessage) {
-  const responses = {
-    "hello": "Hi there! 👋 How can I assist you today?",
-    "devops": "I can help you with DevOps-related topics like CI/CD, Docker, Kubernetes, and more!",
-    "qa": "Need help with QA? I can guide you through manual testing, automation, and tools like Selenium.",
-    "courses": "You can explore our DevOps and QA courses above. Let me know if you need more information!",
-    "default": "Sorry, I didn't understand that. Can you please ask something else?"
-  };
+// Function to call the backend API and get the ChatGPT response
+async function getBotResponseFromAPI(userMessage) {
+  const response = await fetch('/.netlify/functions/chat', {  // Change the URL if your server is hosted elsewhere
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message: userMessage }),
+  });
 
-  const normalizedMessage = userMessage.toLowerCase();
-  return responses[normalizedMessage] || responses["default"];
+  if (!response.ok) {
+    throw new Error('Error communicating with backend');
+  }
+
+  const data = await response.json();
+  return data.reply;
 }
+
