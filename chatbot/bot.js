@@ -1,4 +1,19 @@
-// chatbot/bot.js
+// Function to simulate typing effect for a message
+function typeMessage(message, elementId, speed) {
+  let index = 0;
+  const element = document.getElementById(elementId);
+  element.innerHTML = ''; // Clear previous message
+
+  function type() {
+    if (index < message.length) {
+      element.innerHTML += message.charAt(index);
+      index++;
+      setTimeout(type, speed);
+    }
+  }
+
+  type();
+}
 
 document.addEventListener('DOMContentLoaded', function () {
   const chatbotButton = document.getElementById('chatbot-button');
@@ -8,8 +23,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const chatbotInput = document.getElementById('chatbot-input');
   const chatbotMessages = document.getElementById('chatbot-messages');
 
+  // Initial message typing when the chatbot modal is opened
   chatbotButton.addEventListener('click', () => {
     chatbotModal.classList.remove('hidden');
+    
+    const initialMessage = "Hello! Trayan’s here, your friendly assistant! Let’s chat!";
+    typeMessage(initialMessage, 'chatbot-messages', 100); // Speed set to 100ms for typing effect
   });
 
   chatbotClose.addEventListener('click', () => {
