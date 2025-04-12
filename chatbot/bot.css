@@ -1,54 +1,8 @@
 /* chatbot/bot.css */
-/* Styles for the chatbot container */
 #chatbot-container {
-  /* Use the 'Inter' font for a clean and modern look */
   font-family: 'Inter', sans-serif;
-
-  /* Ensure the container is responsive */
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-
-  /* Add a subtle background color for better visibility */
-  background-color: var(--chatbot-bg-color, #f9f9f9);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Styles for the input placeholder */
 #chatbot-input::placeholder {
-  /* Use a variable for the placeholder color to make it theme-friendly */
-  color: var(--placeholder-color, #a0aec0);
-
-  /* Increase contrast for better accessibility */
-  opacity: 0.8;
-}
-
-/* Add responsive styles using media queries */
-@media (max-width: 768px) {
-  #chatbot-container {
-    padding: 10px;
-    font-size: 14px;
-  }
-}
-
-/* Styles for error states */
-#chatbot-input.error {
-  border: 2px solid var(--error-color, #e53e3e);
-  background-color: var(--error-bg-color, #fff5f5);
-}
-
-#chatbot-error-message {
-  color: var(--error-color, #e53e3e);
-  font-size: 12px;
-  margin-top: 5px;
-}
-
-/* Define CSS variables for consistent theming */
-:root {
-  --chatbot-bg-color: #f9f9f9;
-  --placeholder-color: #a0aec0;
-  --error-color: #e53e3e;
-  --error-bg-color: #fff5f5;
+  color: #a0aec0;
 }
