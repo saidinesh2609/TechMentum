@@ -1,3 +1,4 @@
+/* === External Floating Message === */
 #external-message {
   position: fixed;
   bottom: 16px;  /* Adjust the vertical position */
@@ -11,4 +12,97 @@
   z-index: 9999;
   font-size: 14px;
   text-align: center;
+}
+
+/* === Chatbot Modal Animation === */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+}
+
+.chatbot-modal {
+  transition: all 0.3s ease-in-out;
+  animation: slideIn 0.4s ease forwards;
+}
+
+.chatbot-modal.hidden {
+  animation: slideOut 0.3s ease forwards;
+}
+
+/* === Chatbot Button Pulse Animation === */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#chatbot-button {
+  animation: pulse 2s infinite ease-in-out;
+  cursor: pointer;
+  border: none;
+  background-size: cover;
+  background-position: center;
+  width: 60px;
+  height: 60px;
+}
+
+/* === Chat Messages Styling === */
+#chatbot-messages {
+  max-height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-indigo-600 {
+  color: #5A67D8;
+}
+
+.bg-indigo-50 {
+  background-color: #ebf4ff;
+}
+
+.text-gray-700 {
+  color: #4a5568;
+}
+
+.bg-gray-100 {
+  background-color: #f7fafc;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.rounded-md {
+  border-radius: 0.375rem;
 }
