@@ -145,24 +145,27 @@
         <span>Ask TechMentum</span>
         <button id="chatbot-close" class="text-white font-bold text-xl leading-none">&times;</button>
       </div>
-      <div id="chatbot-messages" class="p-4 overflow-y-auto h-64 space-y-2 text-sm">
-        <div class="text-gray-700 bg-gray-100 p-2 rounded-md">Hi 👋! Ask me about DevOps, QA, or book a free demo!</div>
+      <div id="chatbot-body" class="h-[400px] overflow-auto px-4 py-2 space-y-4">
+        <!-- Chatbot messages will appear here -->
       </div>
-      <div class="p-4 border-t">
-        <form id="chatbot-form" class="flex space-x-2">
-          <input type="text" id="chatbot-input" placeholder="Type your question..." class="flex-1 border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring" required />
-          <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Send</button>
-        </form>
+      <div class="p-4 bg-gray-50">
+        <input id="chatbot-input" type="text" class="w-full p-2 rounded-lg border border-gray-300" placeholder="Ask a question..." />
       </div>
     </div>
   </div>
 
-  <!-- Chatbot Script -->
-  <script src="chatbot/bot.js"></script>
+  <!-- Footer Section -->
+  <footer class="bg-indigo-600 text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p>&copy; 2025 TechMentum - All rights reserved.</p>
+      <div class="flex justify-center space-x-6 mt-4">
+        <a href="#" class="text-white hover:text-indigo-300">Privacy Policy</a>
+        <a href="#" class="text-white hover:text-indigo-300">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-10 mt-10">
-    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-      <p class="text-sm">&copy; 2025 Your Name. All rights reserved.</p>
-      <div class="flex space-x-6">
-        <
+  <script src="chatbot/chatbot.js"></script>
+</body>
+
+</html>
