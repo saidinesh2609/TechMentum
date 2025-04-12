@@ -8,6 +8,11 @@ const chatbotInput = document.getElementById("chatbot-input");
 const chatbotMessages = document.getElementById("chatbot-messages");
 const chatbotForm = document.getElementById("chatbot-form");
 
+// Set base URL for API depending on environment
+const API_BASE = window.location.hostname === 'localhost'
+  ? 'http://localhost:8888' // or change to 3000 if needed
+  : 'https://techmentum.netlify.app';
+
 // Open and close the chatbot modal
 chatbotButton.addEventListener("click", () => {
   chatbotModal.classList.toggle("hidden");
@@ -62,7 +67,7 @@ function displayMessage(message, sender) {
 
 // Function to call the backend API and get the ChatGPT response
 async function getBotResponseFromAPI(userMessage) {
-  const response = await fetch('/.netlify/functions/chat', {  // Change the URL if your server is hosted elsewhere
+  const response = await fetch(`${API_BASE}/.netlify/functions/chat`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ message: userMessage }),
