@@ -1,6 +1,7 @@
 // Function to simulate typing effect for a message
-function typeMessage(message, element, speed) {
+function typeMessage(message, elementId, speed) {
   let index = 0;
+  const element = document.getElementById(elementId);
   element.innerHTML = ''; // Clear previous message
 
   function type() {
@@ -14,34 +15,6 @@ function typeMessage(message, element, speed) {
   type();
 }
 
-// Function to add user message
-function addUserMessage(message, container) {
-  const userMessage = document.createElement('div');
-  userMessage.className = 'text-right text-indigo-600 bg-indigo-50 p-2 rounded-md';
-  userMessage.textContent = message;
-  container.appendChild(userMessage);
-
-  // Auto-scroll
-  container.scrollTop = container.scrollHeight;
-}
-
-// Function to add bot response
-function addBotResponse(reply, container) {
-  const botReply = document.createElement('div');
-  botReply.className = 'text-gray-700 bg-gray-100 p-2 rounded-md';
-  botReply.textContent = reply;
-  container.appendChild(botReply);
-
-  // Auto-scroll
-  container.scrollTop = container.scrollHeight;
-}
-
-// Function to dynamically fetch bot replies (can be replaced with an API call)
-function getBotReply(userMessage) {
-  // Dynamic logic can be added here
-  return "Thanks for reaching out! We'll get back to you shortly.";
-}
-
 document.addEventListener('DOMContentLoaded', function () {
   const chatbotButton = document.getElementById('chatbot-button');
   const chatbotModal = document.getElementById('chatbot-modal');
@@ -49,14 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const chatbotForm = document.getElementById('chatbot-form');
   const chatbotInput = document.getElementById('chatbot-input');
   const chatbotMessages = document.getElementById('chatbot-messages');
-  const externalMessageText = document.getElementById('external-message-text');
-  const externalMessage = document.getElementById('external-message');
-
-  if (!chatbotButton || !chatbotModal || !chatbotClose || !chatbotForm || !chatbotInput || !chatbotMessages || !externalMessageText || !externalMessage) {
-    console.error("One or more required elements are missing in the DOM.");
-    return;
-  }
-
+  
   // Set the chatbot button image (Groot)
   chatbotButton.style.backgroundImage = 'url("/chatbot/chatbot.png")';
   chatbotButton.style.backgroundSize = 'cover';
@@ -66,15 +32,21 @@ document.addEventListener('DOMContentLoaded', function () {
   chatbotButton.style.height = '60px'; // Set a fixed height
 
   // Display and type the external message with animation
+  const externalMessageText = document.getElementById('external-message-text');
+  const externalMessage = document.getElementById('external-message');
   const externalMessageContent = "Trayan at your service"; // External message content
-  typeMessage(externalMessageContent, externalMessageText, 100); // Speed set to 100ms for typing effect
+
+  // Initially type the external message when the page loads
+  typeMessage(externalMessageContent, 'external-message-text', 100); // Speed set to 100ms for typing effect
+
+  // Show external message
   externalMessage.style.display = 'block'; // Make it visible
 
   // Open chatbot modal
   chatbotButton.addEventListener('click', () => {
     chatbotModal.classList.remove('hidden');
     const initialMessage = "Hello! Trayan’s here, your friendly assistant! Let’s chat!";
-    typeMessage(initialMessage, chatbotMessages, 100); // Speed set to 100ms for typing effect
+    typeMessage(initialMessage, 'chatbot-messages', 100); // Speed set to 100ms for typing effect
 
     // Hide external message when chatbot opens
     externalMessage.style.display = 'none';
@@ -83,7 +55,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // Close chatbot modal
   chatbotClose.addEventListener('click', () => {
     chatbotModal.classList.add('hidden');
-    externalMessage.style.display = 'block'; // Show external message again
+    // Optionally, show external message again when the chatbot is closed
+    externalMessage.style.display = 'block';
   });
 
   // Handle user message submission
@@ -93,14 +66,23 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!message) return;
 
     // Add user message
-    addUserMessage(message, chatbotMessages);
+    const userMessage = document.createElement('div');
+    userMessage.className = 'text-right text-indigo-600 bg-indigo-50 p-2 rounded-md';
+    userMessage.textContent = message;
+    chatbotMessages.appendChild(userMessage);
 
     chatbotInput.value = '';
 
+    // Auto-scroll
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
     // Bot response
     setTimeout(() => {
-      const reply = getBotReply(message);
-      addBotResponse(reply, chatbotMessages);
+      const botReply = document.createElement('div');
+      botReply.className = 'text-gray-700 bg-gray-100 p-2 rounded-md';
+      botReply.textContent = "Thanks for reaching out! We'll get back to you shortly.";
+      chatbotMessages.appendChild(botReply);
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
     }, 600);
   });
 });
