@@ -135,8 +135,8 @@
 
   <!-- Chatbot Button + Modal -->
   <div id="chatbot-container">
-    <button id="chatbot-button" class="fixed bottom-6 right-6 bg-indigo-600 hover:bg-indigo-700 text-white p-4 rounded-full shadow-lg z-50">
-      💬
+    <button id="chatbot-button" class="fixed bottom-6 right-6 p-2 rounded-full shadow-lg z-50 bg-white border border-indigo-600 hover:border-indigo-700">
+      <img src="chatbot/chatbot.png" alt="Chatbot" class="w-12 h-12 rounded-full object-cover transition-transform transform hover:scale-110">
     </button>
 
     <div id="chatbot-modal" class="hidden fixed bottom-20 right-6 bg-white border shadow-lg rounded-2xl w-80 max-h-[80vh] overflow-hidden z-50">
@@ -145,7 +145,7 @@
         <button id="chatbot-close" class="text-white font-bold text-xl leading-none">&times;</button>
       </div>
       <div id="chatbot-messages" class="p-4 overflow-y-auto h-64 space-y-2 text-sm">
-        <!-- Initial message will be typed out here -->
+        <div class="text-gray-700 bg-gray-100 p-2 rounded-md">Hi 👋! Ask me about DevOps, QA, or book a free demo!</div>
       </div>
       <div class="p-4 border-t">
         <form id="chatbot-form" class="flex space-x-2">
