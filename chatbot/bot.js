@@ -1,4 +1,4 @@
-/ bot.js
+// bot.js
 
 // Select required DOM elements
 const chatbotButton = document.getElementById("chatbot-button");
