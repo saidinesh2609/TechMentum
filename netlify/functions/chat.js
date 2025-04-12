@@ -1,6 +1,10 @@
-// netlify/functions/chat.js
 const { OpenAI } = require('openai');
-require("dotenv").config();  // To use environment variables
+require("dotenv").config();  // To use environment variables during local development
+
+// Ensure API key is available
+if (!process.env.OPENAI_API_KEY) {
+  throw new Error("Missing OPENAI_API_KEY in environment variables");
+}
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,  // Your OpenAI API key stored in environment variables
@@ -19,7 +23,20 @@ exports.handler = async function(event) {
   }
 
   try {
-    const body = JSON.parse(event.body);
+    let body;
+    try {
+      body = JSON.parse(event.body);
+    } catch (parseError) {
+      return {
+        statusCode: 400,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        },
+        body: JSON.stringify({ error: 'Invalid JSON in request body' }),
+      };
+    }
+
     const userMessage = body.message;
 
     // Request to OpenAI API to generate a response
@@ -28,7 +45,7 @@ exports.handler = async function(event) {
       messages: [{ role: "user", content: userMessage }],
     });
 
-    const reply = completion.choices[0].message.content;  // Get response from OpenAI
+    const reply = completion.choices[0]?.message?.content;  // Get response from OpenAI
     return {
       statusCode: 200,
       headers: {
@@ -45,8 +62,7 @@ exports.handler = async function(event) {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Content-Type',
       },
-      body: JSON.stringify({ error: "Failed to get response from OpenAI" }),
+      body: JSON.stringify({ error: "Failed to get response from OpenAI", details: error.message }),
     };
   }
 };
-
