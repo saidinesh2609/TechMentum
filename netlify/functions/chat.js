@@ -11,6 +11,10 @@ exports.handler = async function(event) {
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
       body: JSON.stringify({ error: 'Method Not Allowed' }),
     };
   }
@@ -27,14 +31,21 @@ exports.handler = async function(event) {
     const reply = completion.choices[0].message.content;
     return {
       statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
       body: JSON.stringify({ reply }),
     };
   } catch (error) {
     console.error("Error from OpenAI:", error);
     return {
       statusCode: 500,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
       body: JSON.stringify({ error: "Failed to get response from OpenAI" }),
     };
   }
 };
-
