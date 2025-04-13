@@ -1,8 +1,0 @@
-/* chatbot/bot.css */
-#chatbot-container {
-  font-family: 'Inter', sans-serif;
-}
-
-#chatbot-input::placeholder {
-  color: #a0aec0;
-}
